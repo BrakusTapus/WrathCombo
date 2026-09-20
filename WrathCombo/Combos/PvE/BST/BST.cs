@@ -255,6 +255,14 @@ internal partial class BST : Melee
             if (IsEnabled(Preset.BST_AdvancedMode_ShieldCharge) && CanWeave() && InMeleeRange() && ActionReady(ShieldCharge) && GetRemainingCharges(ShieldCharge) > BST_Advanced_ShieldCharge)
                 return ShieldCharge;
 
+            // Pull agro from Boner knight so Bossmod doesn't do the infinite cha cha real smooth dance
+            if (IsEnabled(Preset.BST_AdvancedMode_Snarl) && OnLastHorn && ActionReady(Action2) && Svc.ClientState.TerritoryType == 1339 && CurrentTarget.Name.ToString() == "Bone Knight" && PlayerHasAggro)
+                return Action2;
+            
+            // Speeds up farming 'Faded Remnant of Resilience' by skipping the ogre's add phase (sometimes)
+            if (IsEnabled(Preset.BST_AdvancedMode_DumpPartingBlow) && ActionReady(PartingBlow) && CurrentTarget?.CurrentHp <= 1000 && CurrentTarget?.Name.ToString() != "Bone Knight" && OnLastHorn && Svc.ClientState.TerritoryType == 1339)
+                return PartingBlow;
+
             if (BasicCombo(out var basic))
                 return basic;
 

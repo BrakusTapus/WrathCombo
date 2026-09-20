@@ -2453,6 +2453,14 @@ public enum Preset
     [ParentCombo(BST_AdvancedMode)]
     [JobInfo(Job.BST)]
     BST_AdvancedMode_BeastMode = 2516,
+
+    [ParentCombo(BST_AdvancedMode)]
+    [JobInfo(Job.BST)]
+    BST_AdvancedMode_Snarl = 2517,
+
+    [ParentCombo(BST_AdvancedMode)]
+    [JobInfo(Job.BST)]
+    BST_AdvancedMode_DumpPartingBlow = 2518,
     #endregion
 
     #region BARD
